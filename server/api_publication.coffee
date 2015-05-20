@@ -33,3 +33,9 @@ Meteor.publish 'candidates', ->
     self.ready()
     @onStop ->
       handle.stop()
+
+Meteor.publish null, ->
+  Meteor.users.find({})
+
+Meteor.publish null, ->
+  Candidates.find({})

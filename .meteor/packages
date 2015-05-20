@@ -10,5 +10,7 @@ coffeescript
 mquandalle:jade
 accounts-password
 accounts-ui
-sanjo:jasmine
 velocity:html-reporter
+velocity:console-reporter
+http
+mike:mocha
