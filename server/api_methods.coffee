@@ -2,7 +2,10 @@ Meteor.methods
   'user/candidate/add': (name) ->
     currentUser = Meteor.user()
     if currentUser?
-      console.log "inserted #{currentUser._id} | name"
-      Candidates.insert
-        userId : currentUser._id
+      # create a new entry for this user
+      newUserId = Meteor.users.insert
         name: name
+      # insert this relationship into candidates collection
+      Candidates.insert
+        forUserId : currentUser._id
+        userId : newUserId

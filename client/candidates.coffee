@@ -5,7 +5,10 @@ Template.candidates.helpers
     Meteor.user()
 
   allCandidates: ->
-    Candidates.find().fetch()
+    users = []
+    Candidates.find().fetch().forEach (candidate) ->
+      users.push(Meteor.users.findOne(candidate.userId))
+    return users
 
 Template.add.events
   'click .save-name': (event)->

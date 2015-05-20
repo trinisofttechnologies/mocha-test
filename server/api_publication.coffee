@@ -5,7 +5,7 @@ Meteor.publish 'candidates', ->
     # a dictionary of match_id to matched user
     usersByCandidate = {}
     initializing = true
-    handle = Candidates.find({ "userId" : @userId }).observeChanges
+    handle = Candidates.find({ "forUserId" : @userId }).observeChanges
       added: (candidateId) ->
         if !initializing
           candidate = Candidates.findOne candidateId
@@ -21,11 +21,10 @@ Meteor.publish 'candidates', ->
 
     initializing = false
     currentCandidates = Candidates.find({
-      "userId" : @userId
+      "forUserId" : @userId
     }).fetch()
 
     currentCandidates.forEach (candidate) ->
-      console.log candidate
       user = Meteor.users.findOne candidate.userId
       self.added 'candidates', candidate._id, candidate
       self.added 'users', user._id, user
