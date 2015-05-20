@@ -1,0 +1,23 @@
+template(name='candidates')
+  ol
+    +each allCandidates
+      li
+        span #{ name }
+
+template(name='add')
+  form
+    button.save-name Add Candidate
+    input.name
+
+body
+  h1 Candidates!
+  +loginButtons
+
+  +if(currentUser)
+    h1 My Candidates
+    +candidates
+
+    h1 Add Candidate
+    +add
+
+
