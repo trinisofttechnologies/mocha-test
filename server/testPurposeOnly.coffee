@@ -1,6 +1,6 @@
 Meteor.methods({
-  "clearDB": function(){
+  "clearDB": -> 
     Meteor.users.remove({});
     Candidates.remove({});
-  }
+  
 });
