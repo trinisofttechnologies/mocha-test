@@ -1,5 +1,4 @@
 
-
 if typeof MochaWeb != 'undefined' and MochaWeb != null
   MochaWeb.testOnly ->
     describe 'Server', ->
